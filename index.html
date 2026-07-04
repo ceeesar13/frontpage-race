@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>niawi × million — pixel 402, vivo</title>
+<style>
+  :root { --bg:#0b0e14; --fg:#e6edf3; --dim:#7d8590; --orange:#f7931a; --blue:#58a6ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace; }
+  main { max-width:760px; margin:0 auto; padding:48px 20px 80px; }
+  h1 { font-size:1.5rem; margin:0 0 4px; }
+  .dim { color:var(--dim); }
+  .card { border:1px solid #21262d; border-radius:12px; padding:20px 22px; margin:18px 0; background:#0d1117; }
+  .btc { font-size:2.6rem; font-weight:700; color:var(--orange); letter-spacing:-1px; }
+  .pulse { display:inline-block; width:9px; height:9px; border-radius:50%; background:#3fb950; margin-right:8px; animation:p 1.6s infinite; }
+  @keyframes p { 0%,100%{opacity:1} 50%{opacity:.25} }
+  .label { background:#111722; border:1px solid #21262d; border-radius:8px; padding:10px 12px; color:var(--orange); font-size:.95rem; word-break:break-word; }
+  a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
+  .grid3 { display:inline-grid; grid-template-columns:repeat(3,34px); grid-template-rows:repeat(3,34px); gap:3px; }
+  .grid3 div { display:flex; align-items:center; justify-content:center; border-radius:5px; font-weight:700; }
+  .x{background:#dc2626}.o{background:#2563eb}.e{background:#161b22;color:#30363d}
+  code { background:#161b22; padding:2px 6px; border-radius:5px; }
+  h2 { font-size:1.05rem; margin:0 0 8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>niawi × <span class="dim">frontpage.sh/</span>million</h1>
+  <p class="dim">Dev Racing — un pixel que se pinta solo, y un canvas que es un tablero.</p>
+
+  <div class="card">
+    <h2>🎯 El pixel (402, 402) — <span class="dim">la coordenada ES el concepto</span></h2>
+    <p><strong>402 = HTTP "Payment Required"</strong>, el status code del protocolo (MPP) que hace posible comprar cada pixel de este canvas. Su label <strong>se actualiza solo</strong> con el precio de Bitcoin en vivo:</p>
+    <p class="dim" style="margin:.4em 0 .2em"><span class="pulse"></span>BTC/USD ahora (Coinbase, en vivo)</p>
+    <div class="btc" id="btc">…</div>
+    <p class="dim" style="margin:.6em 0 .3em">Label on-chain (formato):</p>
+    <div class="label" id="label">BTC $… ◆ self-update #N ◆ HH:MMZ ◆ via HTTP 402</div>
+    <p style="margin-top:14px"><a href="https://www.frontpage.sh/million" target="_blank">Ver el pixel en el canvas ↗</a></p>
+  </div>
+
+  <div class="card">
+    <h2>⭕❌ Gato on-chain — <span class="dim">el canvas es el tablero</span></h2>
+    <p>Bot <strong>minimax imbatible</strong>, estado leído del canvas cada turno, cada jugada = 1 compra. Partida 1 en (340,300) → empate perfecto:</p>
+    <div class="grid3">
+      <div class="x">X</div><div class="x">X</div><div class="o">O</div>
+      <div class="o">O</div><div class="o">O</div><div class="x">X</div>
+      <div class="x">X</div><div class="o">O</div><div class="x">X</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🪙 One Dollar — <span class="dim">96 px, $0.48, una sola compra</span></h2>
+    <p>Ícono niawi de 2 colores generado desde un bitmap, en (150,100). Más con menos.</p>
+  </div>
+
+  <p class="dim">Código: <a href="https://github.com/ceeesar13/frontpage-race" target="_blank">github.com/ceeesar13/frontpage-race</a> · pagos MPP / 402 gasless vía mppx</p>
+</main>
+<script>
+  async function tick() {
+    try {
+      const r = await fetch("https://api.coinbase.com/v2/prices/BTC-USD/spot");
+      const j = await r.json();
+      const p = Math.round(Number(j.data.amount));
+      document.getElementById("btc").textContent = "$" + p.toLocaleString("en-US");
+      const hhmm = new Date().toISOString().slice(11,16);
+      document.getElementById("label").textContent =
+        `BTC $${p.toLocaleString("en-US")} ◆ self-update #N ◆ ${hhmm}Z ◆ via HTTP 402`;
+    } catch (e) { document.getElementById("btc").textContent = "—"; }
+  }
+  tick(); setInterval(tick, 10000);
+</script>
+</body>
+</html>
