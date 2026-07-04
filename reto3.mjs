@@ -57,14 +57,23 @@ async function readBoard() {
 }
 
 const LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+function winningLine(b) {
+  for (const ln of LINES) { const [a,c,d]=ln; if (b[a] && b[a]===b[c] && b[a]===b[d]) return ln; }
+  return null;
+}
 function winner(b) {
-  for (const [a,c,d] of LINES) if (b[a] && b[a]===b[c] && b[a]===b[d]) return b[a];
+  const ln = winningLine(b);
+  if (ln) return b[ln[0]];
   return b.every(Boolean) ? "draw" : null;
 }
 
 function render(b) {
-  const s = b.map((v,i) => v || (i+1)); // muestra numeros 1-9 en vacias
-  console.log(`\n ${s[0]} │ ${s[1]} │ ${s[2]}\n───┼───┼───\n ${s[3]} │ ${s[4]} │ ${s[5]}\n───┼───┼───\n ${s[6]} │ ${s[7]} │ ${s[8]}\n`);
+  const win = winningLine(b);
+  const cell = (i) => {
+    const v = b[i] || String(i + 1);
+    return win && win.includes(i) ? `[${v}]` : ` ${v} `; // resalta la línea ganadora
+  };
+  console.log(`\n${cell(0)}│${cell(1)}│${cell(2)}\n───┼───┼───\n${cell(3)}│${cell(4)}│${cell(5)}\n───┼───┼───\n${cell(6)}│${cell(7)}│${cell(8)}\n`);
 }
 
 // Minimax: O maximiza, X minimiza
