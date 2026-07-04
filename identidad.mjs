@@ -2,7 +2,7 @@
 import { quote, buy, getGrid } from "./lib.mjs";
 
 const COLOR = process.env.COLOR || "#38bdf8"; // sky — legible de lejos
-const URL = "https://bycesar.dev";
+const URL = "https://ceeesar13.github.io/frontpage-race/";
 const LABEL = process.env.LABEL || "niawi ◆ 3 retos en 60 min ◆ bycesar.dev";
 const DO_BUY = process.argv.includes("--buy");
 const WORD = (process.argv.find((a) => a.startsWith("--word="))?.slice(7) || "NIAWI").toUpperCase();

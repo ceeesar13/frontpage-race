@@ -7,7 +7,7 @@ import { quote, buy, getPixel } from "./lib.mjs";
 // ---- CONFIG ----
 const COORD = { x: 402, y: 402 };      // 402 = Payment Required
 const RGB = "#f7931a";                  // naranja bitcoin
-const URL = "https://bycesar.dev";
+const URL = "https://ceeesar13.github.io/frontpage-race/";
 const THRESHOLD_USD = 250;              // solo rebuy si BTC se movió > $250 (cuida presupuesto)
 
 // contador persistente de auto-updates (prueba de "se actualiza solo")

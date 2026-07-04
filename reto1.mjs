@@ -5,7 +5,7 @@ import { quote, buy } from "./lib.mjs";
 
 // ---- CONFIG (cambiar solo esto) ----
 const ORIGIN = { x: 150, y: 100 };   // esquina sup-izq (zona virgen verificada)
-const URL = "https://bycesar.dev";   // link clickeable del pixel
+const URL = "https://ceeesar13.github.io/frontpage-race/";   // link clickeable del pixel
 const LABEL = "niawi ◆ hecho con <$1";
 const PALETTE = { "#": "#0ea5e9", "o": "#f59e0b" }; // 2 colores legibles de lejos
 const DO_BUY = process.argv.includes("--buy");

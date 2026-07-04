@@ -35,7 +35,7 @@ async function findVirginOrigin() {
   throw new Error("no se encontró bloque virgen en el área de búsqueda");
 }
 const COLOR = { X: "#dc2626", O: "#2563eb" }; // rojo / azul
-const URL = "https://bycesar.dev";
+const URL = "https://ceeesar13.github.io/frontpage-race/";
 const LABEL = "reto3 ◆ gato on-chain";
 const SHOW = process.argv.includes("--showcase"); // X juega para perder, O (minimax) gana
 const AUTO = process.argv.includes("--auto") || SHOW; // bot vs bot (demo)
