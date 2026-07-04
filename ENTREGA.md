@@ -70,3 +70,30 @@ node reto3.mjs --new
 ```
 
 Saldo verificado 16:47: **$1.397 USDC** (partida nueva ≈ $0.045 + update ≈ $0.01 → sobra).
+
+---
+
+# ★ IDENTIDAD EN EL CANVAS
+
+Además de los 3 retos, dejamos la firma en pixel-art (`identidad.mjs`, fuente 5×7):
+
+- **NIAWI** — `#38bdf8`, `(135,120)`–`(163,126)`, 84 px · buyId `01KWQJM3T8V970678W6T3S11PJ`
+- **CESAR** — `#f8fafc`, `(135,128)`–`(163,134)`, 82 px · buyId `01KWQJQR54Q4XN120PKFNZTE8D`
+  · label **"César Rivas · niawi · bycesar.dev"** → al hacer hover aparece el nombre + link.
+
+Preview: https://www.frontpage.sh/million/preview?id=9g_xGJtjBz3v
+
+# RESUMEN DE COMPRAS (on-chain)
+
+| Ítem | buyId | Costo |
+|---|---|---|
+| Reto 1 (96 px) | `01KWQGXBF181EKFDDXFYC6BSQ9` | $0.48 |
+| Reto 2 claim (402,402) | `01KWQGXPK5HP0GF9BMW60PB9A7` | $0.005 |
+| Reto 2 self-update #1 | `01KWQH90Y01AB16W52ZG32PTPY` | $0.01 |
+| Reto 2 self-update #2 | `01KWQHTP0MEX1A9PD4JVJPRVH3` | $0.02 |
+| Reto 3 partida empate (340,300) | 9× $0.005 | $0.045 |
+| Reto 3 partida victoria (349,300) | 7× $0.005 | $0.035 |
+| Identidad NIAWI | `01KWQJM3T8V970678W6T3S11PJ` | $0.42 |
+| Identidad CESAR | `01KWQJQR54Q4XN120PKFNZTE8D` | $0.41 |
+
+Gasto total ≈ **$1.42** de $1.95 fondeados · saldo final ≈ **$0.53 USDC**.
