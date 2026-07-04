@@ -99,7 +99,7 @@
   <div class="card">
     <div class="grid3" id="board"></div>
     <div class="body">
-      <span class="tag">partida 1 · (340,300) · empate perfecto 🤝</span>
+      <span class="tag">2 partidas on-chain · empate (340,300) + victoria del bot (349,300) 🏆</span>
       <ul class="flow">
         <li>leer 9 pixeles del canvas</li>
         <li>minimax elige jugada óptima</li>
@@ -135,9 +135,9 @@
   const C={"#":"#0ea5e9","o":"#f59e0b"}, ic=document.getElementById("icon");
   ART.forEach(r=>[...r].forEach(ch=>{const d=document.createElement("div");d.style.background=C[ch]||"transparent";ic.appendChild(d)}));
 
-  // --- Reto 3: tablero final (empate) con casilla central resaltada ---
-  const B=["X","X","O","O","O","X","X","O","X"], bd=document.getElementById("board");
-  B.forEach((v,i)=>{const d=document.createElement("div");d.className=v==="X"?"x":"o";d.textContent=v;bd.appendChild(d)});
+  // --- Reto 3: tablero de VICTORIA del bot (O gana), línea 2-4-6 resaltada ---
+  const B=["X","X","O","X","O","","O","",""], WIN=[2,4,6], bd=document.getElementById("board");
+  B.forEach((v,i)=>{const d=document.createElement("div");d.className=(v?(v==="X"?"x":"o"):"e")+(WIN.includes(i)?" win":"");d.textContent=v||"";bd.appendChild(d)});
 
   // --- Reto 2: BTC en vivo + label idéntico al on-chain, contador que sube solo ---
   let n=1;

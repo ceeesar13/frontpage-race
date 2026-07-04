@@ -37,8 +37,19 @@ async function findVirginOrigin() {
 const COLOR = { X: "#dc2626", O: "#2563eb" }; // rojo / azul
 const URL = "https://bycesar.dev";
 const LABEL = "reto3 ◆ gato on-chain";
-const AUTO = process.argv.includes("--auto"); // bot vs bot (demo)
+const SHOW = process.argv.includes("--showcase"); // X juega para perder, O (minimax) gana
+const AUTO = process.argv.includes("--auto") || SHOW; // bot vs bot (demo)
 const DRY = process.argv.includes("--dry");   // sin comprar (test logica)
+
+// jugada que PIERDE: la que da a O el mejor resultado (score máximo)
+function loseMove(b) {
+  let best = { score: -Infinity, move: null };
+  for (let i = 0; i < 9; i++) if (!b[i]) {
+    b[i] = "X"; const s = minimax(b, "O").score; b[i] = null;
+    if (s > best.score) best = { score: s, move: i };
+  }
+  return best.move;
+}
 
 const cellCoord = (i) => ({ x: ORIGIN.x + (i % 3) * STEP, y: ORIGIN.y + Math.floor(i / 3) * STEP });
 
@@ -123,6 +134,10 @@ async function main() {
       const ans = await rl.question("Tu jugada (1-9): ");
       move = Number(ans) - 1;
       if (!(move >= 0 && move < 9) || b[move]) { console.log("inválida"); continue; }
+    } else if (SHOW && turn === "X") {
+      // showcase: X juega para perder → O gana con línea de 3
+      move = loseMove([...b]);
+      console.log(`X (retador) juega ${move + 1}`);
     } else {
       // bot minimax (O). En AUTO tambien juega X con minimax.
       move = minimax([...b], turn).move;
