@@ -1,0 +1,10 @@
+# SECRETOS — nunca subir
+wallet-backup.txt
+keyring.env
+dbus.sock
+*.key
+
+# estado/efímeros
+reto2.count
+grid.json
+node_modules/
